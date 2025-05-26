@@ -1,5 +1,5 @@
 
-import { User, MapPin, Check } from "lucide-react";
+import { User, MapPin, Check, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const ProfessionalProfiles = () => {
@@ -13,7 +13,8 @@ export const ProfessionalProfiles = () => {
       completedJobs: 127,
       hourlyRate: "$75/hr",
       verified: true,
-      description: "20+ years experience in residential and commercial construction."
+      description: "20+ years experience in residential and commercial construction.",
+      avatar: "/placeholder.svg"
     },
     {
       id: 2,
@@ -24,7 +25,8 @@ export const ProfessionalProfiles = () => {
       completedJobs: 89,
       hourlyRate: "$65/hr",
       verified: true,
-      description: "Specializing in kitchen and bathroom renovations with modern designs."
+      description: "Specializing in kitchen and bathroom renovations with modern designs.",
+      avatar: "/placeholder.svg"
     },
     {
       id: 3,
@@ -35,7 +37,8 @@ export const ProfessionalProfiles = () => {
       completedJobs: 156,
       hourlyRate: "$80/hr",
       verified: true,
-      description: "Licensed electrician with expertise in smart home installations."
+      description: "Licensed electrician with expertise in smart home installations.",
+      avatar: "/placeholder.svg"
     },
     {
       id: 4,
@@ -46,51 +49,57 @@ export const ProfessionalProfiles = () => {
       completedJobs: 98,
       hourlyRate: "$70/hr",
       verified: true,
-      description: "Emergency repairs and system installations available 24/7."
+      description: "Emergency repairs and system installations available 24/7.",
+      avatar: "/placeholder.svg"
     }
   ];
 
   return (
-    <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 p-6">
-      <h2 className="text-xl font-semibold text-white mb-4">Featured Professionals</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-white/50 p-6 shadow-lg">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6">Featured Professionals</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {professionals.map((professional) => (
           <div
             key={professional.id}
-            className="bg-slate-900/50 rounded-lg p-4 border border-slate-600 hover:border-slate-500 transition-colors"
+            className="bg-white rounded-xl p-6 border border-gray-200 hover:border-orange-300 hover:shadow-md transition-all duration-200"
           >
-            <div className="flex items-start justify-between mb-3">
-              <div className="flex items-center space-x-3">
-                <div className="bg-blue-500/20 p-2 rounded-full">
-                  <User className="h-5 w-5 text-blue-400" />
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center space-x-4">
+                <div className="relative">
+                  <img 
+                    src={professional.avatar} 
+                    alt={professional.name}
+                    className="w-16 h-16 rounded-full bg-gray-200 object-cover"
+                  />
+                  {professional.verified && (
+                    <Check className="absolute -top-1 -right-1 h-5 w-5 text-green-500 bg-white rounded-full p-1" />
+                  )}
                 </div>
                 <div>
-                  <div className="flex items-center space-x-2">
-                    <h3 className="text-white font-semibold">{professional.name}</h3>
-                    {professional.verified && (
-                      <Check className="h-4 w-4 text-green-400" />
-                    )}
-                  </div>
-                  <p className="text-blue-400 text-sm">{professional.specialty}</p>
+                  <h3 className="text-gray-800 font-bold text-lg">{professional.name}</h3>
+                  <p className="text-orange-600 font-medium">{professional.specialty}</p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-yellow-400 font-semibold">★ {professional.rating}</p>
-                <p className="text-slate-400 text-sm">{professional.completedJobs} jobs</p>
+                <div className="flex items-center space-x-1">
+                  <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                  <span className="text-gray-800 font-semibold">{professional.rating}</span>
+                </div>
+                <p className="text-gray-600 text-sm">{professional.completedJobs} jobs</p>
               </div>
             </div>
             
-            <p className="text-slate-300 text-sm mb-3">{professional.description}</p>
+            <p className="text-gray-700 text-sm mb-4">{professional.description}</p>
             
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-1">
-                  <MapPin className="h-3 w-3 text-slate-400" />
-                  <span className="text-slate-400 text-sm">{professional.location}</span>
+                  <MapPin className="h-4 w-4 text-gray-500" />
+                  <span className="text-gray-600 text-sm">{professional.location}</span>
                 </div>
-                <span className="text-green-400 font-semibold text-sm">{professional.hourlyRate}</span>
+                <span className="text-green-600 font-bold">{professional.hourlyRate}</span>
               </div>
-              <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white">
                 Contact
               </Button>
             </div>

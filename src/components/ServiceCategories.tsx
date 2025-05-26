@@ -1,57 +1,74 @@
 
-import { Hammer, Wrench, PaintBucket, Zap } from "lucide-react";
+import { Hammer, Wrench, PaintBucket, Zap, Building, Users, HardHat } from "lucide-react";
 
 export const ServiceCategories = () => {
   const categories = [
     {
-      name: "Construction",
-      description: "Building, extensions, structural work",
-      icon: Hammer,
+      name: "Bricklayer",
+      icon: Building,
       jobCount: 45,
-      avgPrice: "$2,500 - $15,000"
+      color: "bg-red-100 border-red-300",
+      iconColor: "text-red-600"
     },
     {
-      name: "Maintenance",
-      description: "Repairs, upkeep, preventive care",
+      name: "Architect",
+      icon: Users,
+      jobCount: 23,
+      color: "bg-blue-100 border-blue-300",
+      iconColor: "text-blue-600"
+    },
+    {
+      name: "Engineer",
+      icon: HardHat,
+      jobCount: 34,
+      color: "bg-green-100 border-green-300",
+      iconColor: "text-green-600"
+    },
+    {
+      name: "Plumber",
       icon: Wrench,
       jobCount: 78,
-      avgPrice: "$150 - $800"
+      color: "bg-cyan-100 border-cyan-300",
+      iconColor: "text-cyan-600"
     },
     {
-      name: "Renovation",
-      description: "Kitchen, bathroom, room makeovers",
-      icon: PaintBucket,
-      jobCount: 32,
-      avgPrice: "$1,200 - $8,500"
-    },
-    {
-      name: "Electrical",
-      description: "Wiring, installations, repairs",
+      name: "Electrician",
       icon: Zap,
       jobCount: 56,
-      avgPrice: "$200 - $1,500"
+      color: "bg-yellow-100 border-yellow-300",
+      iconColor: "text-yellow-600"
+    },
+    {
+      name: "Painter",
+      icon: PaintBucket,
+      jobCount: 32,
+      color: "bg-purple-100 border-purple-300",
+      iconColor: "text-purple-600"
+    },
+    {
+      name: "Construction",
+      icon: Hammer,
+      jobCount: 67,
+      color: "bg-orange-100 border-orange-300",
+      iconColor: "text-orange-600"
     }
   ];
 
   return (
-    <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 p-6">
-      <h2 className="text-xl font-semibold text-white mb-4">Service Categories</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-white/50 p-6 shadow-lg">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Service Categories</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
         {categories.map((category) => (
           <div
             key={category.name}
-            className="bg-slate-900/50 rounded-lg p-4 border border-slate-600 hover:border-slate-500 transition-colors cursor-pointer"
+            className="flex flex-col items-center space-y-3 cursor-pointer group"
           >
-            <div className="flex items-center space-x-3 mb-3">
-              <div className="bg-blue-500/20 p-2 rounded-lg">
-                <category.icon className="h-5 w-5 text-blue-400" />
-              </div>
-              <h3 className="text-white font-semibold">{category.name}</h3>
+            <div className={`w-20 h-20 rounded-full ${category.color} border-2 flex items-center justify-center group-hover:scale-110 transition-transform duration-200 shadow-md`}>
+              <category.icon className={`h-8 w-8 ${category.iconColor}`} />
             </div>
-            <p className="text-slate-400 text-sm mb-3">{category.description}</p>
-            <div className="space-y-1">
-              <p className="text-green-400 text-sm">{category.jobCount} active jobs</p>
-              <p className="text-slate-300 text-sm font-medium">{category.avgPrice}</p>
+            <div className="text-center">
+              <h3 className="text-gray-800 font-semibold text-sm">{category.name}</h3>
+              <p className="text-orange-600 text-xs font-medium">{category.jobCount} active jobs</p>
             </div>
           </div>
         ))}
