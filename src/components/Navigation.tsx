@@ -1,5 +1,5 @@
 
-import { Wallet, TrendingUp } from "lucide-react";
+import { Hammer, Users, ClipboardList } from "lucide-react";
 
 interface NavigationProps {
   activeTab: string;
@@ -13,34 +13,46 @@ export const Navigation = ({ activeTab, setActiveTab }: NavigationProps) => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-3">
             <div className="bg-gradient-to-r from-blue-500 to-green-500 p-2 rounded-lg">
-              <TrendingUp className="h-6 w-6 text-white" />
+              <Hammer className="h-6 w-6 text-white" />
             </div>
-            <h1 className="text-xl font-bold text-white">TradePro</h1>
+            <h1 className="text-xl font-bold text-white">ServicePro</h1>
           </div>
           
           <div className="flex space-x-4">
             <button
-              onClick={() => setActiveTab("portfolio")}
+              onClick={() => setActiveTab("services")}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-                activeTab === "portfolio"
+                activeTab === "services"
                   ? "bg-blue-600 text-white shadow-lg"
                   : "text-slate-300 hover:text-white hover:bg-slate-800"
               }`}
             >
-              <Wallet className="h-4 w-4" />
-              <span>Portfolio</span>
+              <Hammer className="h-4 w-4" />
+              <span>Services</span>
             </button>
             
             <button
-              onClick={() => setActiveTab("trading")}
+              onClick={() => setActiveTab("professionals")}
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-                activeTab === "trading"
+                activeTab === "professionals"
                   ? "bg-blue-600 text-white shadow-lg"
                   : "text-slate-300 hover:text-white hover:bg-slate-800"
               }`}
             >
-              <TrendingUp className="h-4 w-4" />
-              <span>Trading</span>
+              <Users className="h-4 w-4" />
+              <span>Professionals</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab("jobs")}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+                activeTab === "jobs"
+                  ? "bg-blue-600 text-white shadow-lg"
+                  : "text-slate-300 hover:text-white hover:bg-slate-800"
+              }`}
+            >
+              <ClipboardList className="h-4 w-4" />
+              <span>Job Requests</span>
             </button>
           </div>
         </div>
