@@ -4,49 +4,49 @@ import { Hammer, Wrench, PaintBucket, Zap, Building, Users, HardHat } from "luci
 export const ServiceCategories = () => {
   const categories = [
     {
-      name: "Bricklayer",
+      name: "Pedreiro",
       icon: Building,
       jobCount: 45,
       color: "bg-red-100 border-red-300",
       iconColor: "text-red-600"
     },
     {
-      name: "Architect",
+      name: "Arquiteto",
       icon: Users,
       jobCount: 23,
       color: "bg-blue-100 border-blue-300",
       iconColor: "text-blue-600"
     },
     {
-      name: "Engineer",
+      name: "Engenheiro",
       icon: HardHat,
       jobCount: 34,
       color: "bg-green-100 border-green-300",
       iconColor: "text-green-600"
     },
     {
-      name: "Plumber",
+      name: "Encanador",
       icon: Wrench,
       jobCount: 78,
       color: "bg-cyan-100 border-cyan-300",
       iconColor: "text-cyan-600"
     },
     {
-      name: "Electrician",
+      name: "Eletricista",
       icon: Zap,
       jobCount: 56,
       color: "bg-yellow-100 border-yellow-300",
       iconColor: "text-yellow-600"
     },
     {
-      name: "Painter",
+      name: "Pintor",
       icon: PaintBucket,
       jobCount: 32,
       color: "bg-purple-100 border-purple-300",
       iconColor: "text-purple-600"
     },
     {
-      name: "Construction",
+      name: "Construção",
       icon: Hammer,
       jobCount: 67,
       color: "bg-orange-100 border-orange-300",
@@ -56,7 +56,7 @@ export const ServiceCategories = () => {
 
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-white/50 p-6 shadow-lg">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Service Categories</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Categorias de Serviços</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
         {categories.map((category) => (
           <div
@@ -68,7 +68,7 @@ export const ServiceCategories = () => {
             </div>
             <div className="text-center">
               <h3 className="text-gray-800 font-semibold text-sm">{category.name}</h3>
-              <p className="text-orange-600 text-xs font-medium">{category.jobCount} active jobs</p>
+              <p className="text-orange-600 text-xs font-medium">{category.jobCount} trabalhos ativos</p>
             </div>
           </div>
         ))}

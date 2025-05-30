@@ -5,38 +5,38 @@ export const PopularServices = () => {
   const popularServices = [
     {
       id: 1,
-      name: "Kitchen Renovation",
+      name: "Reforma de Cozinha",
       image: "/placeholder.svg",
       requests: 89,
-      avgPrice: "$3,500"
+      avgPrice: "R$ 15.000"
     },
     {
       id: 2,
-      name: "Emergency Plumbing",
+      name: "Encanamento de Emergência",
       image: "/placeholder.svg",
       requests: 156,
-      avgPrice: "$180"
+      avgPrice: "R$ 350"
     },
     {
       id: 3,
-      name: "Electrical Installation",
+      name: "Instalação Elétrica",
       image: "/placeholder.svg",
       requests: 67,
-      avgPrice: "$450"
+      avgPrice: "R$ 850"
     },
     {
       id: 4,
-      name: "House Painting",
+      name: "Pintura Residencial",
       image: "/placeholder.svg",
       requests: 203,
-      avgPrice: "$1,200"
+      avgPrice: "R$ 2.400"
     }
   ];
 
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-white/50 p-6 shadow-lg">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold text-gray-800">Popular Services</h2>
+        <h2 className="text-xl font-bold text-gray-800">Serviços Populares</h2>
         <ArrowRight className="h-5 w-5 text-orange-500" />
       </div>
       
@@ -53,7 +53,7 @@ export const PopularServices = () => {
             />
             <h3 className="font-semibold text-gray-800 mb-2">{service.name}</h3>
             <div className="space-y-1">
-              <p className="text-orange-600 text-sm font-medium">{service.requests} requests</p>
+              <p className="text-orange-600 text-sm font-medium">{service.requests} solicitações</p>
               <p className="text-green-600 text-sm font-bold">{service.avgPrice}</p>
             </div>
           </div>

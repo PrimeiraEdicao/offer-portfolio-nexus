@@ -6,51 +6,51 @@ export const JobRequests = () => {
   const jobRequests = [
     {
       id: 1,
-      title: "Kitchen Renovation",
-      description: "Complete kitchen remodel including cabinets, countertops, and appliances.",
-      budget: "$8,000 - $12,000",
-      location: "Downtown",
-      postedTime: "2 hours ago",
-      urgency: "Medium",
-      category: "Renovation"
+      title: "Reforma de Cozinha",
+      description: "Reforma completa da cozinha incluindo armários, bancadas e eletrodomésticos.",
+      budget: "R$ 20.000 - R$ 30.000",
+      location: "Centro",
+      postedTime: "2 horas atrás",
+      urgency: "Média",
+      category: "Reforma"
     },
     {
       id: 2,
-      title: "Bathroom Plumbing Repair",
-      description: "Fix leaking pipes under the sink and replace faucet.",
-      budget: "$300 - $500",
-      location: "Suburbs",
-      postedTime: "4 hours ago",
-      urgency: "High",
-      category: "Maintenance"
+      title: "Reparo de Encanamento",
+      description: "Consertar vazamento nos canos debaixo da pia e trocar a torneira.",
+      budget: "R$ 300 - R$ 500",
+      location: "Zona Sul",
+      postedTime: "4 horas atrás",
+      urgency: "Alta",
+      category: "Manutenção"
     },
     {
       id: 3,
-      title: "Deck Construction",
-      description: "Build a 12x16 wooden deck with railing in backyard.",
-      budget: "$3,500 - $5,000",
-      location: "North District",
-      postedTime: "1 day ago",
-      urgency: "Low",
-      category: "Construction"
+      title: "Construção de Deck",
+      description: "Construir um deck de madeira 4x5 metros com corrimão no quintal.",
+      budget: "R$ 8.000 - R$ 12.000",
+      location: "Zona Norte",
+      postedTime: "1 dia atrás",
+      urgency: "Baixa",
+      category: "Construção"
     },
     {
       id: 4,
-      title: "Electrical Panel Upgrade",
-      description: "Replace old electrical panel with modern 200-amp service.",
-      budget: "$1,200 - $1,800",
-      location: "City Center",
-      postedTime: "6 hours ago",
-      urgency: "Medium",
-      category: "Electrical"
+      title: "Upgrade do Quadro Elétrico",
+      description: "Substituir quadro elétrico antigo por serviço moderno de 200 ampères.",
+      budget: "R$ 2.500 - R$ 4.000",
+      location: "Centro da Cidade",
+      postedTime: "6 horas atrás",
+      urgency: "Média",
+      category: "Elétrica"
     }
   ];
 
   const getUrgencyColor = (urgency: string) => {
     switch (urgency) {
-      case "High": return "text-red-600 bg-red-100";
-      case "Medium": return "text-yellow-600 bg-yellow-100";
-      case "Low": return "text-green-600 bg-green-100";
+      case "Alta": return "text-red-600 bg-red-100";
+      case "Média": return "text-yellow-600 bg-yellow-100";
+      case "Baixa": return "text-green-600 bg-green-100";
       default: return "text-gray-600 bg-gray-100";
     }
   };
@@ -58,9 +58,9 @@ export const JobRequests = () => {
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-white/50 p-6 shadow-lg">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">Active Job Requests</h2>
+        <h2 className="text-2xl font-bold text-gray-800">Solicitações de Trabalho Ativas</h2>
         <Button className="bg-green-600 hover:bg-green-700 text-white">
-          Post New Job
+          Publicar Novo Trabalho
         </Button>
       </div>
       
@@ -76,7 +76,7 @@ export const JobRequests = () => {
                 <span className="text-orange-600 font-medium">{job.category}</span>
               </div>
               <span className={`px-3 py-1 rounded-full text-sm font-medium ${getUrgencyColor(job.urgency)}`}>
-                {job.urgency} Priority
+                Prioridade {job.urgency}
               </span>
             </div>
             
@@ -98,7 +98,7 @@ export const JobRequests = () => {
                 </div>
               </div>
               <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-                Submit Proposal
+                Enviar Proposta
               </Button>
             </div>
           </div>

@@ -5,41 +5,41 @@ export const FeaturedProfessionals = () => {
   const professionals = [
     {
       id: 1,
-      name: "Mike Thompson",
-      specialty: "General Construction",
+      name: "Carlos Silva",
+      specialty: "Construção Geral",
       rating: 4.9,
-      tag: "Top Rated",
+      tag: "Mais Avaliado",
       avatar: "/placeholder.svg"
     },
     {
       id: 2,
-      name: "Sarah Johnson",
-      specialty: "Interior Design",
+      name: "Maria Santos",
+      specialty: "Design de Interiores",
       rating: 4.8,
-      tag: "Fast Response",
+      tag: "Resposta Rápida",
       avatar: "/placeholder.svg"
     },
     {
       id: 3,
-      name: "Carlos Rodriguez",
-      specialty: "Electrical Services",
+      name: "João Oliveira",
+      specialty: "Serviços Elétricos",
       rating: 4.9,
-      tag: "Licensed Pro",
+      tag: "Profissional Licenciado",
       avatar: "/placeholder.svg"
     },
     {
       id: 4,
-      name: "Emma Davis",
-      specialty: "Plumbing Expert",
+      name: "Ana Costa",
+      specialty: "Especialista em Encanamento",
       rating: 4.7,
-      tag: "24/7 Service",
+      tag: "Serviço 24h",
       avatar: "/placeholder.svg"
     }
   ];
 
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-white/50 p-6 shadow-lg">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">Featured Professionals</h2>
+      <h2 className="text-xl font-bold text-gray-800 mb-4">Profissionais em Destaque</h2>
       
       <div className="flex space-x-4 overflow-x-auto pb-2">
         {professionals.map((professional) => (
