@@ -1,12 +1,17 @@
 
-import { Search, Hammer } from "lucide-react";
+import { Search, Hammer, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { AuthDialog } from "./AuthDialog";
 
 export const TopBar = () => {
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+
   return (
     <div className="bg-gradient-to-r from-orange-400 to-orange-500 shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center justify-between space-x-4">
           <div className="flex items-center space-x-2">
             <div className="bg-white p-2 rounded-full shadow-md">
               <Hammer className="h-6 w-6 text-orange-500" />
@@ -23,8 +28,18 @@ export const TopBar = () => {
               />
             </div>
           </div>
+
+          <Button 
+            onClick={() => setIsAuthOpen(true)}
+            className="bg-white text-orange-500 hover:bg-gray-100 font-semibold px-4 py-2 rounded-full shadow-md"
+          >
+            <User className="h-4 w-4 mr-2" />
+            Entrar
+          </Button>
         </div>
       </div>
+
+      <AuthDialog open={isAuthOpen} onOpenChange={setIsAuthOpen} />
     </div>
   );
 };
