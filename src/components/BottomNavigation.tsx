@@ -8,10 +8,10 @@ interface BottomNavigationProps {
 
 export const BottomNavigation = ({ activeTab, setActiveTab }: BottomNavigationProps) => {
   const navItems = [
-    { id: "home", label: "Home", icon: Home },
-    { id: "search", label: "Search", icon: Search },
-    { id: "jobs", label: "Job Requests", icon: ClipboardList },
-    { id: "profile", label: "Profile", icon: User }
+    { id: "inicio", label: "Início", icon: Home },
+    { id: "buscar", label: "Buscar", icon: Search },
+    { id: "trabalhos", label: "Trabalhos", icon: ClipboardList },
+    { id: "perfil", label: "Perfil", icon: User }
   ];
 
   return (

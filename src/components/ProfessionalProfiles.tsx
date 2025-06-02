@@ -6,57 +6,57 @@ export const ProfessionalProfiles = () => {
   const professionals = [
     {
       id: 1,
-      name: "Mike Thompson",
-      specialty: "General Construction",
-      location: "Downtown Area",
+      name: "Carlos Silva",
+      specialty: "Construção Geral",
+      location: "Área Central",
       rating: 4.9,
       completedJobs: 127,
-      hourlyRate: "$75/hr",
+      hourlyRate: "R$ 75/hora",
       verified: true,
-      description: "20+ years experience in residential and commercial construction.",
+      description: "Mais de 20 anos de experiência em construção residencial e comercial.",
       avatar: "/placeholder.svg"
     },
     {
       id: 2,
-      name: "Sarah Johnson",
-      specialty: "Interior Renovation",
-      location: "Suburbs",
+      name: "Maria Santos",
+      specialty: "Reforma de Interiores",
+      location: "Zona Sul",
       rating: 4.8,
       completedJobs: 89,
-      hourlyRate: "$65/hr",
+      hourlyRate: "R$ 65/hora",
       verified: true,
-      description: "Specializing in kitchen and bathroom renovations with modern designs.",
+      description: "Especialista em reformas de cozinha e banheiro com designs modernos.",
       avatar: "/placeholder.svg"
     },
     {
       id: 3,
-      name: "Carlos Rodriguez",
-      specialty: "Electrical Services",
-      location: "City Center",
+      name: "João Oliveira",
+      specialty: "Serviços Elétricos",
+      location: "Centro da Cidade",
       rating: 4.9,
       completedJobs: 156,
-      hourlyRate: "$80/hr",
+      hourlyRate: "R$ 80/hora",
       verified: true,
-      description: "Licensed electrician with expertise in smart home installations.",
+      description: "Eletricista licenciado com expertise em instalações de casa inteligente.",
       avatar: "/placeholder.svg"
     },
     {
       id: 4,
-      name: "David Chen",
-      specialty: "Plumbing & HVAC",
-      location: "North District",
+      name: "Pedro Costa",
+      specialty: "Encanamento & HVAC",
+      location: "Zona Norte",
       rating: 4.7,
       completedJobs: 98,
-      hourlyRate: "$70/hr",
+      hourlyRate: "R$ 70/hora",
       verified: true,
-      description: "Emergency repairs and system installations available 24/7.",
+      description: "Reparos de emergência e instalações de sistemas disponíveis 24/7.",
       avatar: "/placeholder.svg"
     }
   ];
 
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-white/50 p-6 shadow-lg">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Featured Professionals</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-6">Profissionais em Destaque</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {professionals.map((professional) => (
           <div
@@ -85,7 +85,7 @@ export const ProfessionalProfiles = () => {
                   <Star className="h-4 w-4 text-yellow-400 fill-current" />
                   <span className="text-gray-800 font-semibold">{professional.rating}</span>
                 </div>
-                <p className="text-gray-600 text-sm">{professional.completedJobs} jobs</p>
+                <p className="text-gray-600 text-sm">{professional.completedJobs} trabalhos</p>
               </div>
             </div>
             
@@ -100,7 +100,7 @@ export const ProfessionalProfiles = () => {
                 <span className="text-green-600 font-bold">{professional.hourlyRate}</span>
               </div>
               <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-                Contact
+                Contatar
               </Button>
             </div>
           </div>
