@@ -1,19 +1,14 @@
-// src/pages/PerfilPage.tsx (versão corrigida)
+// src/pages/PerfilPage.tsx
 
 import { TopBar } from "@/components/TopBar";
-// Remova o useState se 'activeTab' não for mais usado internamente na PerfilPage
-// import { useState } from "react"; 
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { User, Edit3, LogOut, Shield, Settings } from "lucide-react";
+import { Link } from "react-router-dom"; // 1. IMPORTE O LINK AQUI
 
 const PerfilPage = () => {
-  // Se você não precisa mais de 'activeTab' para outra lógica nesta página,
-  // você pode remover a linha abaixo:
-  // const [activeTab, setActiveTab] = useState("perfil"); 
-
   const userData = {
     name: "Usuário Exemplo",
     email: "usuario@example.com",
@@ -24,8 +19,8 @@ const PerfilPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-orange-50 to-yellow-200">
-      <TopBar /> 
-      
+      <TopBar />
+
       <main className="container mx-auto px-4 py-6 space-y-6 pb-20">
         <Card className="bg-white/90 backdrop-blur-sm border-white/60 shadow-lg">
           <CardHeader className="text-center">
@@ -51,9 +46,13 @@ const PerfilPage = () => {
             </div>
 
             <div className="space-y-2">
-              <Button variant="outline" className="w-full justify-start">
-                <Edit3 className="mr-2 h-4 w-4" /> Editar Perfil
+              {/* 2. FAÇA A ALTERAÇÃO AQUI */}
+              <Button variant="outline" className="w-full justify-start" asChild>
+                <Link to="/editar-perfil">
+                  <Edit3 className="mr-2 h-4 w-4" /> Editar Perfil
+                </Link>
               </Button>
+              {/* FIM DA ALTERAÇÃO */}
               <Button variant="outline" className="w-full justify-start">
                 <Settings className="mr-2 h-4 w-4" /> Configurações da Conta
               </Button>
@@ -68,7 +67,6 @@ const PerfilPage = () => {
         </Card>
       </main>
 
-      {/* Chame BottomNavigation sem as props activeTab e setActiveTab */}
       <BottomNavigation />
     </div>
   );
