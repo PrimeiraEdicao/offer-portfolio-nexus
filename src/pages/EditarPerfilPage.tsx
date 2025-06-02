@@ -25,11 +25,11 @@ import {
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { TopBar } from "@/components/TopBar"; // Ou uma TopBar específica para páginas internas
+import { TopBar } from "@/components/TopBar";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft } from "lucide-react";
+import { validarCpf } from "@/lib/validators"; // 1. IMPORTE A FUNÇÃO DE VALIDAÇÃO
 
-// Definição do tipo para os bancos que virão da API
 interface Banco {
   ispb: string;
   name: string;
@@ -37,23 +37,23 @@ interface Banco {
   fullName: string | null;
 }
 
-// Schema de validação com Zod
+// 2. ATUALIZE O SCHEMA DE VALIDAÇÃO
 const formSchema = z.object({
   banco: z.string().min(1, "Selecione um banco."),
-  agencia: z.string().min(3, "Agência inválida.").max(6, "Agência inválida."), // Ex: 0001 ou 0001-9
-  conta: z.string().min(3, "Conta inválida.").max(15, "Conta inválida."), // Ex: 12345-6
+  agencia: z.string().min(3, "Agência inválida.").max(6, "Agência inválida."),
+  conta: z.string().min(3, "Conta inválida.").max(15, "Conta inválida."),
   tipoChavePix: z.enum(["cpf", "email", "telefone", "aleatoria"], {
     required_error: "Selecione o tipo da chave Pix.",
   }),
   chavePix: z.string().min(1, "Chave Pix é obrigatória."),
 }).refine(data => {
   if (data.tipoChavePix === "cpf") {
-    return /^\d{11}$/.test(data.chavePix.replace(/\D/g, ''));
+    return validarCpf(data.chavePix); // USA A NOVA FUNÇÃO AQUI
   }
   return true;
 }, {
-  message: "CPF inválido. Deve conter 11 dígitos numéricos.",
-  path: ["chavePix"], // Aplica o erro ao campo chavePix
+  message: "CPF informado como chave Pix é inválido.", // MENSAGEM DE ERRO ATUALIZADA
+  path: ["chavePix"], 
 });
 
 type EditarPerfilFormData = z.infer<typeof formSchema>;
@@ -64,12 +64,11 @@ export default function EditarPerfilPage() {
   const [bancos, setBancos] = useState<Banco[]>([]);
   const [isLoadingBancos, setIsLoadingBancos] = useState(true);
 
-  // Buscar lista de bancos brasileiros da Brasil API
   useEffect(() => {
     fetch("https://brasilapi.com.br/api/banks/v1")
       .then((res) => res.json())
       .then((data: Banco[]) => {
-        setBancos(data.filter(banco => banco.code !== null).sort((a, b) => (a.code!) - (b.code!))); // Filtra e ordena
+        setBancos(data.filter(banco => banco.code !== null).sort((a, b) => (a.code!) - (b.code!)));
         setIsLoadingBancos(false);
       })
       .catch((error) => {
@@ -89,19 +88,17 @@ export default function EditarPerfilPage() {
       banco: "",
       agencia: "",
       conta: "",
-      tipoChavePix: undefined, // Garante que o RadioGroup comece sem seleção
+      tipoChavePix: undefined,
       chavePix: "",
     },
   });
 
   const onSubmit = (data: EditarPerfilFormData) => {
     console.log("Dados do formulário:", data);
-    // Aqui você faria a chamada para sua API para salvar os dados
     toast({
       title: "Dados Salvos!",
       description: "Suas informações bancárias foram atualizadas com sucesso.",
     });
-    // Exemplo: navigate("/perfil"); // Voltar para a página de perfil
   };
 
   return (
@@ -223,11 +220,21 @@ export default function EditarPerfilPage() {
                     <FormItem>
                       <FormLabel>Chave Pix</FormLabel>
                       <FormControl>
-                        <Input placeholder="Digite sua chave Pix" {...field} />
+                        <Input 
+                          placeholder="Digite sua chave Pix" 
+                          {...field} 
+                          onChange={(e) => {
+                            if (form.getValues("tipoChavePix") === "cpf") {
+                              field.onChange(e.target.value.replace(/\D/g, ''));
+                            } else {
+                              field.onChange(e.target.value);
+                            }
+                          }}
+                        />
                       </FormControl>
                        {form.watch("tipoChavePix") === "cpf" && (
                         <FormDescription>
-                          Se a chave for CPF, digite apenas os 11 números.
+                          Digite apenas os 11 números do CPF.
                         </FormDescription>
                       )}
                       <FormMessage />

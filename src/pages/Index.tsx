@@ -1,34 +1,38 @@
-
-import { useState } from "react";
+// src/pages/Index.tsx
+// Remova useState se activeTab não for mais usado para renderização condicional aqui
+// import { useState } from "react"; 
 import { ServiceCategories } from "@/components/ServiceCategories";
-import { ProfessionalProfiles } from "@/components/ProfessionalProfiles";
-import { JobRequests } from "@/components/JobRequests";
+import { ProfessionalProfiles } from "@/components/ProfessionalProfiles"; // Estes seriam movidos para suas próprias páginas
+import { JobRequests } from "@/components/JobRequests";         // Estes seriam movidos para suas próprias páginas
 import { TopBar } from "@/components/TopBar";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { PopularServices } from "@/components/PopularServices";
 import { FeaturedProfessionals } from "@/components/FeaturedProfessionals";
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState("inicio");
+  // O estado activeTab pode não ser mais necessário aqui se a navegação
+  // por abas agora é feita por rotas distintas.
+  // const [activeTab, setActiveTab] = useState("inicio");
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-orange-50 to-yellow-200">
       <TopBar />
       
       <main className="container mx-auto px-4 py-6 space-y-6 pb-20">
-        {activeTab === "inicio" && (
-          <>
-            <ServiceCategories />
-            <PopularServices />
-            <FeaturedProfessionals />
-          </>
-        )}
-        {activeTab === "buscar" && <ServiceCategories />}
+        {/* Index.tsx agora só renderiza o conteúdo da rota "/" (Início) */}
+        <ServiceCategories />
+        <PopularServices />
+        <FeaturedProfessionals />
+        
+        {/* O conteúdo abaixo seria movido para suas próprias páginas/rotas:
+        {activeTab === "buscar" && <ServiceCategories />} 
         {activeTab === "profissionais" && <ProfessionalProfiles />}
         {activeTab === "trabalhos" && <JobRequests />}
+        */}
       </main>
 
-      <BottomNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+      {/* Chame BottomNavigation sem as props, assumindo que ele foi atualizado */}
+      <BottomNavigation />
     </div>
   );
 };
