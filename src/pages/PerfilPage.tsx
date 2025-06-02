@@ -57,7 +57,9 @@ const PerfilPage = () => {
                 <Settings className="mr-2 h-4 w-4" /> Configurações da Conta
               </Button>
               <Button variant="outline" className="w-full justify-start">
-                <Shield className="mr-2 h-4 w-4" /> Segurança e Privacidade
+                <Link to="/seguranca">
+                  <Shield className="mr-2 h-4 w-4" /> Segurança e Privacidade
+                </Link>  
               </Button>
               <Button variant="destructive" className="w-full justify-start">
                 <LogOut className="mr-2 h-4 w-4" /> Sair
