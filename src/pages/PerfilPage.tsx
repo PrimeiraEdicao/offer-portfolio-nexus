@@ -1,27 +1,29 @@
-// src/pages/PerfilPage.tsx
-import { TopBar } from "@/components/TopBar"; // Ou uma versão específica para páginas internas
+// src/pages/PerfilPage.tsx (versão corrigida)
+
+import { TopBar } from "@/components/TopBar";
+// Remova o useState se 'activeTab' não for mais usado internamente na PerfilPage
+// import { useState } from "react"; 
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { User, Edit3, LogOut, Shield, Settings } from "lucide-react";
-import { useState } from "react"; // Para controlar a aba ativa da navegação inferior
 
 const PerfilPage = () => {
-  const [activeTab, setActiveTab] = useState("perfil"); // Manter a aba ativa correta
+  // Se você não precisa mais de 'activeTab' para outra lógica nesta página,
+  // você pode remover a linha abaixo:
+  // const [activeTab, setActiveTab] = useState("perfil"); 
 
-  // Dados mockados do usuário
   const userData = {
     name: "Usuário Exemplo",
     email: "usuario@example.com",
-    avatarUrl: "/placeholder.svg", // Use um placeholder ou imagem real
+    avatarUrl: "/placeholder.svg",
     memberSince: "Janeiro de 2024",
     phone: "(11) 98765-4321",
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-orange-50 to-yellow-200">
-      {/* Você pode querer uma TopBar diferente para páginas internas ou passar props para ela */}
       <TopBar /> 
       
       <main className="container mx-auto px-4 py-6 space-y-6 pb-20">
@@ -66,16 +68,8 @@ const PerfilPage = () => {
         </Card>
       </main>
 
-      <BottomNavigation activeTab={activeTab} setActiveTab={(tab) => {
-        // Idealmente, isso se tornaria <Link to={`/${tab}`}> ou similar
-        // Por enquanto, para manter a lógica da BottomNavigation,
-        // podemos redirecionar ou apenas setar a aba.
-        // Para navegação real, veja o próximo passo.
-        setActiveTab(tab);
-        if (tab !== "perfil") {
-          // Navegar para outras rotas (ex: navigate(`/${tab}`) com useNavigate)
-        }
-      }} />
+      {/* Chame BottomNavigation sem as props activeTab e setActiveTab */}
+      <BottomNavigation />
     </div>
   );
 };
